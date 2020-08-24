@@ -1,4 +1,16 @@
 import React from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {
+  faFire,
+  faTruck,
+  faBatteryFull,
+} from "@fortawesome/free-solid-svg-icons"
+
+const logos = {
+  fire: faFire,
+  truck: faTruck,
+  battery: faBatteryFull,
+}
 
 function SellingPoints({ children }) {
   return <div>{children}</div>
@@ -9,11 +21,19 @@ function SellingPoint({ title, logo, children }) {
     <div
       style={{
         display: "grid",
-        border: "solid 1px black",
         gridTemplateColumns: "80px 1fr",
       }}
     >
-      <Logo>{logo}</Logo>
+      <div
+        style={{
+          height: "40px",
+          width: "40px",
+          display: "grid",
+          placeItems: "center",
+        }}
+      >
+        <FontAwesomeIcon color="orange" icon={logos[logo]} />
+      </div>
       <div
         style={{
           display: "flex",
@@ -27,10 +47,6 @@ function SellingPoint({ title, logo, children }) {
       </div>
     </div>
   )
-}
-
-function Logo() {
-  return <div>tbd</div>
 }
 
 SellingPoints.SellingPoint = SellingPoint

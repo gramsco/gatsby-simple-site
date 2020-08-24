@@ -1,5 +1,5 @@
 import React, { useState, createContext, useContext } from "react"
-
+import "./card.css"
 const CardsContext = createContext(null)
 
 function Cards({ children }) {
@@ -12,22 +12,27 @@ function Cards({ children }) {
   )
 }
 
-function Card({ children, id }) {
+function Card({ title, children, id }) {
   const { hovered, setHovered } = useContext(CardsContext)
   return (
     <div
+      tabIndex="-1"
+      role="button"
       onMouseEnter={() => setHovered(id)}
       onMouseLeave={() => setHovered(null)}
       id={id}
-      className={`card ${id === hovered ? "hovered" : ""} `}
+      className={`card ${
+        id === hovered ? "hovered" : hovered === null ? "" : "darken"
+      } `}
     >
+      <h3 style={{ textAlign: "center", background: "lightgrey" }}>{title}</h3>
       {children}
     </div>
   )
 }
 
 export const Price = ({ children }) => (
-  <span style={{ fontWeight: "800" }}>$${children}</span>
+  <span style={{ fontWeight: "800" }}>${children}</span>
 )
 
 export const Specifications = ({ specs }) => {

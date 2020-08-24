@@ -1,13 +1,15 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
+
+import "@fortawesome/fontawesome-svg-core/styles.css"
 
 import SellingPoints from "../components/landingpage/components/selling_point"
 import Cards from "../components/landingpage/components/cards"
 import { CallToAction } from "../components/shared/cta"
+import VideoWrapper from "../components/landingpage/components/video_wrapper"
+import SubHeader from "../components/landingpage/components/subheader"
 
 const { Card } = Cards
 const { Price, Specifications } = Card
@@ -15,8 +17,10 @@ const { Price, Specifications } = Card
 const IndexPage = () => (
   <Layout>
     <SEO title="Digital Trombone" />
+    <SubHeader />
     <SellingPoints>
       <div
+        id="features"
         style={{
           display: "grid",
           gridTemplateRows: "repeat(3, 1fr)",
@@ -26,30 +30,34 @@ const IndexPage = () => (
           maxWidth: "600px",
         }}
       >
-        <SellingPoints.SellingPoint title="Premium Materials" logo={"boh"}>
+        <SellingPoints.SellingPoint title="Premium Materials" logo="fire">
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt. "
         </SellingPoints.SellingPoint>
-        <SellingPoints.SellingPoint title="Fast Shipping" logo={"boh"}>
+        <SellingPoints.SellingPoint title="Fast Shipping" logo="truck">
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt. "
         </SellingPoints.SellingPoint>
-        <SellingPoints.SellingPoint title="Quality Assurance" logo={"boh"}>
+        <SellingPoints.SellingPoint title="Quality Assurance" logo="battery">
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt. "
         </SellingPoints.SellingPoint>
       </div>
     </SellingPoints>
 
+    <VideoWrapper />
+
+    <br />
     <Cards>
       <div
+        id="pricing"
         style={{
           display: "flex",
           justifyContent: "space-evenly",
           flexWrap: "wrap",
         }}
       >
-        <Card>
+        <Card title="Bronze Trombone" id="bronze-trombone">
           <Price>600</Price>
           <Specifications
             specs={[
@@ -59,11 +67,11 @@ const IndexPage = () => (
               "Lorem Ipsum 4",
             ]}
           />
-          <CallToAction>what ?</CallToAction>
+          <CallToAction>I want to try</CallToAction>
         </Card>
 
-        <Card>
-          <Price>600</Price>
+        <Card title="Silver Trombone" id="silver-trombone">
+          <Price>900</Price>
           <Specifications
             specs={[
               "Lorem ipsum1",
@@ -72,11 +80,11 @@ const IndexPage = () => (
               "Lorem Ipsum 4",
             ]}
           />
-          <CallToAction>what ? </CallToAction>
+          <CallToAction>I'm fully convinced</CallToAction>
         </Card>
 
-        <Card>
-          <Price>600</Price>
+        <Card title="Gold Trombone" id="gold-trombone">
+          <Price>1900</Price>
           <Specifications
             specs={[
               "Lorem ipsum1",
@@ -85,7 +93,7 @@ const IndexPage = () => (
               "Lorem Ipsum 4",
             ]}
           />
-          <CallToAction>what ? </CallToAction>
+          <CallToAction>I'm a pro</CallToAction>
         </Card>
       </div>
     </Cards>
