@@ -4,7 +4,7 @@ import React, { useState } from "react"
 import { AnchorLink } from "gatsby-plugin-anchor-links"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBars } from "@fortawesome/free-solid-svg-icons"
-
+import Logo from "./logo.svg"
 import "./header.css"
 
 const NavElement = ({ to, children }) => (
@@ -91,7 +91,7 @@ function Header({ siteTitle }) {
               <img
                 id="header-img"
                 style={{ height: "40px" }}
-                src="/logo.svg"
+                src={Logo}
                 alt="The amazing logo of WhatWhat Cie"
               />
               {siteTitle}

@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react"
 import "./video.css"
+import thumbnail from "../../assets/thumbnail.png"
+import video from "../../assets/video.mp4"
 
 const words = ["Digital", "Trombone", "The One", "for you", "", "", ""]
 export default function VideoWrapper() {
   const [isplayed, setIsPlayed] = useState(false)
   const [current, setCurrent] = useState(0)
+  const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
     if (!isplayed) return
@@ -20,7 +23,7 @@ export default function VideoWrapper() {
   return (
     <div
       style={{
-        margin: "0 auto",
+        margin: "5% auto",
         display: "flex",
         justifyContent: "center",
         width: "50vw",
@@ -38,14 +41,24 @@ export default function VideoWrapper() {
         {words[current]}
       </h2>
       <video
+        onLoad={() => setLoaded(true)}
         id="video"
-        onPlay={() => setIsPlayed(true)}
+        onPlay={() => {
+          setLoaded(true)
+          setIsPlayed(true)
+        }}
         loop
         muted
         style={{ position: "relative", zIndex: "-1" }}
         autoPlay={true}
-        src="/video.mp4"
+        src={video}
       />
+      {!loaded && (
+        <img
+          src={thumbnail}
+          style={{ position: "absolute", top: "0%", left: 0 }}
+        />
+      )}
     </div>
   )
 }
